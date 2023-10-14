@@ -58,7 +58,7 @@ const BillingForm = ({
           </CardHeader>
 
           <CardFooter className='flex flex-col items-start space-y-2 md:flex-row md:justify-between md:space-x-0'>
-            <Button type='submit'>
+            <Button className='text-white' type='submit'>
               {isLoading ? (
                 <Loader2 className='mr-4 h-4 w-4 animate-spin' />
               ) : null}
@@ -71,7 +71,7 @@ const BillingForm = ({
               <p className='rounded-full text-xs font-medium'>
                 {subscriptionPlan.isCanceled
                   ? 'Your plan will be canceled on '
-                  : 'Your plan renews on'}
+                  : 'Your plan renews on '}
                 {format(
                   subscriptionPlan.stripeCurrentPeriodEnd!,
                   'dd.MM.yyyy'

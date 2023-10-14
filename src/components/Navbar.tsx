@@ -21,7 +21,7 @@ const Navbar = () => {
           <Link
             href='/'
             className='flex z-40 font-semibold'>
-            <span>quill.</span>
+            <span>Quotia</span>
           </Link>
 
           <MobileNav isAuth={!!user} />
@@ -47,6 +47,7 @@ const Navbar = () => {
                 <RegisterLink
                   className={buttonVariants({
                     size: 'sm',
+                    className: 'bg-green-600 hover:bg-green-700',
                   })}>
                   Get started{' '}
                   <ArrowRight className='ml-1.5 h-5 w-5' />
