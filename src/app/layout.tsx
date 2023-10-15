@@ -3,6 +3,7 @@ import Providers from '@/components/Providers'
 import { cn, constructMetadata } from '@/lib/utils'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { Analytics } from '@vercel/analytics/react';
 
 import 'react-loading-skeleton/dist/skeleton.css'
 import 'simplebar-react/dist/simplebar.min.css'
@@ -29,6 +30,7 @@ export default function RootLayout({
           <Toaster />
           <Navbar />
           {children}
+          <Analytics />
         </body>
       </Providers>
     </html>
