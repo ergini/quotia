@@ -3,8 +3,12 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Button, buttonVariants } from '@/components/ui/button'
 import Image from 'next/image'
+import { RegisterLink, getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 
 export default function Home() {
+  const { getUser } = getKindeServerSession()
+  const user = getUser()
+
   return (
     <>
       <MaxWidthWrapper className='mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center'>
@@ -24,17 +28,30 @@ export default function Home() {
           asking questions right away.
         </p>
 
-        <Link
-          className={buttonVariants({
-            size: 'lg',
-            className: 'mt-5 text-white',
-          })}
-          href='/dashboard'
-          target='_blank'
-        >
-          Get started{' '}
-          <ArrowRight className='ml-2 h-5 w-5' />
-        </Link>
+        {user && user.id ? (
+          <Link
+            className={buttonVariants({
+              size: 'lg',
+              className: 'mt-5 text-white',
+            })}
+            href='/dashboard'
+            target='_blank'
+          >
+            Get started{' '}
+            <ArrowRight className='ml-2 h-5 w-5' />
+          </Link>
+        ) : (
+          <RegisterLink
+            className={buttonVariants({
+              size: 'lg',
+              className: 'mt-5 text-white',
+            })}
+            target='_blank'
+          >
+            Get started{' '}
+            <ArrowRight className='ml-2 h-5 w-5' />
+          </RegisterLink>
+        )}
       </MaxWidthWrapper>
 
       {/* value proposition section */}
@@ -148,7 +165,7 @@ export default function Home() {
             </div>
           </li>
         </ol>
-{/* Countinue */}
+        {/* Countinue */}
         <div className='mx-auto max-w-6xl px-6 lg:px-8'>
           <div className='mt-16 flow-root sm:mt-24'>
             <div className='-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4'>
